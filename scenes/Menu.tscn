@@ -1,0 +1,274 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://assets/PressStart2P-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/gear.png" type="Texture" id=2]
+[ext_resource path="res://assets/chickens/pink/down/sprite_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/chickens/pink/down/sprite_2.png" type="Texture" id=4]
+[ext_resource path="res://assets/chickens/pink/down/sprite_0.png" type="Texture" id=5]
+[ext_resource path="res://assets/chickens/white/down/sprite_0.png" type="Texture" id=6]
+[ext_resource path="res://assets/chickens/blue/down/sprite_1.png" type="Texture" id=7]
+[ext_resource path="res://assets/chickens/green/down/sprite_2.png" type="Texture" id=8]
+[ext_resource path="res://assets/chickens/blue/down/sprite_2.png" type="Texture" id=9]
+[ext_resource path="res://assets/chickens/green/down/sprite_0.png" type="Texture" id=10]
+[ext_resource path="res://assets/chickens/white/down/sprite_1.png" type="Texture" id=11]
+[ext_resource path="res://assets/chickens/white/down/sprite_2.png" type="Texture" id=12]
+[ext_resource path="res://assets/chickens/blue/down/sprite_0.png" type="Texture" id=13]
+[ext_resource path="res://assets/chickens/green/down/sprite_1.png" type="Texture" id=14]
+[ext_resource path="res://scenes/Menu.gd" type="Script" id=15]
+[ext_resource path="res://scenes/SettingsMenu.gd" type="Script" id=16]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 1 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 10 ), ExtResource( 14 ), ExtResource( 8 ), ExtResource( 13 ), ExtResource( 7 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=6]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 1 )
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource( 15 )
+
+[node name="Title" type="Label" parent="."]
+margin_left = 390.0
+margin_top = 170.0
+margin_right = 890.0
+margin_bottom = 270.0
+custom_fonts/font = SubResource( 1 )
+text = "Freeway"
+align = 1
+valign = 1
+
+[node name="SelectMode" type="Control" parent="."]
+margin_left = 40.0
+margin_top = 360.0
+margin_right = 1240.0
+margin_bottom = 560.0
+
+[node name="OnePlayerButton" type="Button" parent="SelectMode"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -400.0
+margin_top = -100.0
+margin_right = -200.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 100, 100 )
+custom_fonts/font = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="SelectMode/OnePlayerButton"]
+position = Vector2( 50, 50 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
+centered = false
+
+[node name="Mode" type="Label" parent="SelectMode/OnePlayerButton"]
+margin_right = 200.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 6 )
+text = "Solo"
+align = 1
+valign = 1
+
+[node name="Tooltip" type="Label" parent="SelectMode/OnePlayerButton"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="TwoPlayersButton" type="Button" parent="SelectMode"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 100.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 100, 100 )
+custom_fonts/font = SubResource( 2 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="SelectMode/TwoPlayersButton"]
+position = Vector2( 146, 107 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+centered = false
+offset = Vector2( -48.3333, -60 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="SelectMode/TwoPlayersButton"]
+position = Vector2( 84, 107 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
+centered = false
+offset = Vector2( -96.6667, -60 )
+
+[node name="Mode" type="Label" parent="SelectMode/TwoPlayersButton"]
+margin_right = 200.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 6 )
+text = "2 Jogadores"
+align = 1
+valign = 1
+
+[node name="FourPlayersButton" type="Button" parent="SelectMode"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 200.0
+margin_top = -100.0
+margin_right = 400.0
+margin_bottom = 100.0
+rect_pivot_offset = Vector2( 100, 100 )
+custom_fonts/font = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="SelectMode/FourPlayersButton"]
+position = Vector2( 29, 39 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 5 )
+frame = 10
+playing = true
+centered = false
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="SelectMode/FourPlayersButton"]
+position = Vector2( 178, 110 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 5 )
+frame = 3
+playing = true
+centered = false
+offset = Vector2( -96.6666, -120 )
+
+[node name="AnimatedSprite3" type="AnimatedSprite" parent="SelectMode/FourPlayersButton"]
+position = Vector2( 180, 190 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 5 )
+frame = 11
+playing = true
+centered = false
+offset = Vector2( -96.6666, -120 )
+
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="SelectMode/FourPlayersButton"]
+position = Vector2( 84, 190 )
+scale = Vector2( 0.6, 0.6 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+centered = false
+offset = Vector2( -96.6666, -120 )
+
+[node name="Mode" type="Label" parent="SelectMode/FourPlayersButton"]
+margin_right = 200.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 6 )
+text = "4 Jogadores"
+align = 1
+valign = 1
+
+[node name="SettingsMenu" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -350.0
+margin_top = -158.0
+margin_right = 350.0
+margin_bottom = 158.0
+window_title = "Configurações"
+script = ExtResource( 16 )
+
+[node name="Options" type="Control" parent="SettingsMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -168.0
+margin_top = -43.0
+margin_right = 168.0
+margin_bottom = 43.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Sound" type="Control" parent="SettingsMenu/Options"]
+margin_right = 133.0
+margin_bottom = 19.0
+
+[node name="Label" type="Label" parent="SettingsMenu/Options/Sound"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 7 )
+text = "Som: "
+
+[node name="CheckButton" type="CheckButton" parent="SettingsMenu/Options/Sound"]
+margin_left = 57.0
+margin_top = -12.0
+margin_right = 133.0
+margin_bottom = 28.0
+
+[node name="MaxPoints" type="Control" parent="SettingsMenu/Options"]
+margin_top = 27.0
+margin_right = 269.0
+margin_bottom = 46.0
+
+[node name="Label" type="Label" parent="SettingsMenu/Options/MaxPoints"]
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 7 )
+text = "Máximo de pontos: "
+
+[node name="TextEdit" type="TextEdit" parent="SettingsMenu/Options/MaxPoints"]
+margin_left = 278.0
+margin_top = -11.0
+margin_right = 336.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 8 )
+
+[node name="FloatMenu" type="Control" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -50.0
+margin_top = 7.0
+margin_right = -10.0
+margin_bottom = 51.0
+
+[node name="Control" type="Control" parent="FloatMenu"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="SettingsButton" type="Button" parent="FloatMenu"]
+margin_right = 472.0
+margin_bottom = 446.0
+rect_scale = Vector2( 0.1, 0.1 )
+icon = ExtResource( 2 )
+flat = true
+icon_align = 1
+
+[connection signal="mouse_entered" from="SelectMode/OnePlayerButton" to="SelectMode/OnePlayerButton" method="_on_OnePlayerButton_mouse_entered"]
+[connection signal="mouse_exited" from="SelectMode/OnePlayerButton" to="SelectMode/OnePlayerButton" method="_on_OnePlayerButton_mouse_exited"]
+[connection signal="pressed" from="SelectMode/OnePlayerButton" to="." method="_on_OnePlayerButton_pressed"]
+[connection signal="pressed" from="SelectMode/TwoPlayersButton" to="." method="_on_TwoPlayersButton_pressed"]
+[connection signal="pressed" from="SelectMode/FourPlayersButton" to="." method="_on_FourPlayersButton_pressed"]
+[connection signal="confirmed" from="SettingsMenu" to="SettingsMenu" method="_on_SettingsMenu_confirmed"]
+[connection signal="custom_action" from="SettingsMenu" to="SettingsMenu" method="_on_SettingsMenu_custom_action"]
+[connection signal="visibility_changed" from="SettingsMenu" to="SettingsMenu" method="_on_SettingsMenu_visibility_changed"]
+[connection signal="pressed" from="FloatMenu/SettingsButton" to="." method="_on_SettingsButton_pressed"]

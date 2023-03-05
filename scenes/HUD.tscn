@@ -1,0 +1,107 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scripts/HUD.gd" type="Script" id=1]
+[ext_resource path="res://assets/PressStart2P-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/chickens/pink/down/sprite_1.png" type="Texture" id=3]
+[ext_resource path="res://assets/chickens/blue/down/sprite_1.png" type="Texture" id=4]
+[ext_resource path="res://assets/chickens/white/down/sprite_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/chickens/green/down/sprite_1.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "blue",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "green",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "pink",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "white",
+"speed": 5.0
+} ]
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 2 )
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Control" type="Control" parent="."]
+margin_top = 2.0
+margin_right = 131.0
+margin_bottom = 66.0
+
+[node name="Controls" type="Label" parent="Control"]
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 42.0
+margin_bottom = 72.0
+rect_pivot_offset = Vector2( 18, 18 )
+custom_fonts/font = SubResource( 1 )
+text = "W
+S"
+valign = 1
+
+[node name="Score" type="Label" parent="Control"]
+margin_left = 100.0
+margin_top = 7.0
+margin_right = 136.0
+margin_bottom = 67.0
+rect_pivot_offset = Vector2( 18, 18 )
+custom_fonts/font = SubResource( 1 )
+text = "0/0"
+valign = 1
+
+[node name="Skin" type="AnimatedSprite" parent="Control"]
+position = Vector2( 66, 34 )
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 3 )
+animation = "white"
+
+[node name="Message" type="Label" parent="."]
+margin_left = 390.0
+margin_top = 170.0
+margin_right = 890.0
+margin_bottom = 270.0
+custom_fonts/font = SubResource( 2 )
+text = "Player Ganhou!"
+align = 1
+valign = 1
+
+[node name="ExitButton" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -226.0
+margin_top = -60.0
+margin_right = -26.0
+margin_bottom = 60.0
+text = "Sair"
+
+[node name="RestartButton" type="Button" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 664.0
+margin_top = -60.0
+margin_right = 864.0
+margin_bottom = 60.0
+text = "Reiniciar"
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_Restart_pressed"]

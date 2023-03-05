@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://scenes/FinishLine.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Menu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/wallpaperfreeway.png" type="Texture" id=3]
+[ext_resource path="res://assets/sons/ponto.wav" type="AudioStream" id=4]
+[ext_resource path="res://scripts/Main.gd" type="Script" id=6]
+[ext_resource path="res://assets/sons/tema.wav" type="AudioStream" id=10]
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Menu" parent="." instance=ExtResource( 2 )]
+
+[node name="Floor" type="Sprite" parent="."]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="FinishLine" parent="." instance=ExtResource( 1 )]
+position = Vector2( 638.66, 64 )
+
+[node name="StartLine" parent="." instance=ExtResource( 1 )]
+visible = false
+position = Vector2( 638.66, 653 )
+
+[node name="TimerSlow" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="TimerFast" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="AudioTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="AudioCountdown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="LeaveGamePopup" type="ConfirmationDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -124.5
+margin_top = -29.0
+margin_right = 124.5
+margin_bottom = 29.0
+rect_min_size = Vector2( 150, 52.5 )
+window_title = ""
+dialog_text = "Deseja realmente finalizar a partida?"
+
+[connection signal="four_players_game" from="Menu" to="." method="_on_Menu_four_players_game"]
+[connection signal="one_player_game" from="Menu" to="." method="_on_Menu_one_player_game"]
+[connection signal="two_players_game" from="Menu" to="." method="_on_Menu_two_players_game"]
+[connection signal="timeout" from="TimerSlow" to="." method="_on_Slow_timeout"]
+[connection signal="timeout" from="TimerFast" to="." method="_on_Fast_timeout"]
+[connection signal="confirmed" from="LeaveGamePopup" to="." method="_on_LeaveGamePopup_confirmed"]
